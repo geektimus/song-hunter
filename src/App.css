@@ -23,6 +23,10 @@
   to { transform: rotate(360deg); }
 }
 
+input.large-input-text {
+    width: 300px;
+}
+
 .ranking {
   margin: 0 auto;
   width: 500px;

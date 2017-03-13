@@ -16,8 +16,10 @@ class SongAdder extends Component {
 
     songWillBeAdded() {
         let songName = this.state.songName;
-        this.setState({songName: ""})
-        this.props.handleSong(songName)
+        if (songName !== "") {
+            this.setState({songName: ""})
+            this.props.handleSong({name: songName, votes: 1})
+        }
     }
 
     render() {
