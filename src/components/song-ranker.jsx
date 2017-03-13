@@ -2,8 +2,30 @@ import React, { Component } from 'react';
 
 class SongRanker extends Component {
 
+    addVoteTo(evt) {
+        let songIndex = parseInt(evt.target.value, 10);
+        
+        let songs = this.props.songs.map((song, index) => {
+            if (index === songIndex) {
+                console.log("adding vote to: ", song.name)
+                song.votes++
+            }
+            return song
+        })
+
+        this.setState({songs: songs})
+    }
+
     render() {
-        let songs = this.props.songs.map((song, index) => <li key={index}>{song.name} - {song.votes}</li>)
+        let songs = this.props.songs.map(
+            (song, index) => 
+                <li key={index}>
+                    <span className="songDesc">{song.name} - <span className="votes">{song.votes}</span></span>
+                    <button className="voter" value={index} onClick={this.addVoteTo.bind(this)}>👍🏻</button>
+                </li>
+                
+        )
+
         return <div className="ranking">
             <div className="title">Ranking</div>
             <ul>

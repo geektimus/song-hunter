@@ -42,3 +42,11 @@ input.large-input-text {
   margin: 0;
   padding: 0;
 }
+
+.songDesc {
+  font-size: 0.8em;
+}
+
+.songDesc .votes {
+  font-weight: bold;
+}
