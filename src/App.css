@@ -22,3 +22,19 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.ranking {
+  margin: 0 auto;
+  width: 500px;
+}
+
+.ranking .title {
+  font-weight: bold;
+  margin: 15px 0px;
+}
+
+.ranking ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

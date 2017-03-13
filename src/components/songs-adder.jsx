@@ -15,9 +15,9 @@ class SongAdder extends Component {
     }
 
     songWillBeAdded() {
-        console.log("A song will be added to the vote list.", this.state.songName)
-        console.info("Clearing input field");
+        let songName = this.state.songName;
         this.setState({songName: ""})
+        this.props.handleSong(songName)
     }
 
     render() {
