@@ -11,9 +11,9 @@ class App extends Component {
     this.state = {songs: []}
   }
 
-  songWillBeAdded(songName) {
-    console.log("A song will be added to the vote list.", songName)
-    let songs = [...this.state.songs,songName]
+  songWillBeAdded(song) {
+    console.log("A song will be added to the vote list.", song.name)
+    let songs = [...this.state.songs,song]
     this.setState({songs: songs})
   }
 
