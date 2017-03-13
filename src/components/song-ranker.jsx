@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 
 class SongRanker extends Component {
 
+    compare(song_a,song_b) {
+        if (song_b.votes < song_a.votes)
+            return -1;
+        if (song_b.votes > song_a.votes)
+            return 1;
+        return 0;
+    }
+
     addVoteTo(evt) {
         let songIndex = parseInt(evt.target.value, 10);
         
@@ -11,9 +19,9 @@ class SongRanker extends Component {
                 song.votes++
             }
             return song
-        })
+        }).sort(this.compare);
 
-        this.setState({songs: songs})
+        this.props.handleListUpdates(songs);
     }
 
     render() {

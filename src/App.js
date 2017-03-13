@@ -17,6 +17,10 @@ class App extends Component {
     this.setState({songs: songs})
   }
 
+  songListShouldBeUpdated(songs) {
+    this.setState({songs: songs})
+  }
+
   render() {
     return (
       <div className="App">
@@ -25,7 +29,7 @@ class App extends Component {
           <h2>Welcome to the Song Hunter</h2>
         </div>
         <SongAdder handleSong={this.songWillBeAdded.bind(this)}/>
-        <SongRanker songs={this.state.songs}/>
+        <SongRanker handleListUpdates={this.songListShouldBeUpdated.bind(this)} songs={this.state.songs}/>
       </div>
     );
   }
