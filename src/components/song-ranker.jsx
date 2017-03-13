@@ -2,26 +2,9 @@ import React, { Component } from 'react';
 
 class SongRanker extends Component {
 
-    compare(song_a,song_b) {
-        if (song_b.votes < song_a.votes)
-            return -1;
-        if (song_b.votes > song_a.votes)
-            return 1;
-        return 0;
-    }
-
     addVoteTo(evt) {
         let songIndex = parseInt(evt.target.value, 10);
-        
-        let songs = this.props.songs.map((song, index) => {
-            if (index === songIndex) {
-                console.log("adding vote to: ", song.name)
-                song.votes++
-            }
-            return song
-        }).sort(this.compare);
-
-        this.props.handleListUpdates(songs);
+        this.props.handleListUpdates(songIndex);
     }
 
     render() {
