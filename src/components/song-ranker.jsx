@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Badge, Table } from 'react-bootstrap';
 
 class SongRanker extends Component {
 
@@ -10,19 +11,26 @@ class SongRanker extends Component {
     render() {
         let songs = this.props.songs.map(
             (song, index) =>
-                <li key={index}>
-                    <span className="songDesc">{song.name} - <span className="votes">{song.votes}</span></span>
-                    <button className="voter" value={index} onClick={this.addVoteTo.bind(this)}>+</button>
-                </li>
+                <tr key={index}>
+                    <td><span className="songDesc">{song.name} - <Badge>{song.votes}</Badge></span></td>
+                    <td><button className="voter" value={index} onClick={this.addVoteTo.bind(this)}>+</button></td>
+                </tr>
         )
 
-        return <div className="ranking">
+        return songs.length > 0 ? <div className="ranking">
             <div className="title">Ranking</div>
-            <ul>
-                {songs}
-            </ul>
-        </div>
-
+            <Table bordered striped>
+                <thead>
+                    <tr>
+                        <th style={{ textAlign: "center" }}>Song - Votes</th>
+                        <th style={{ textAlign: "center" }}>Vote</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {songs}
+                </tbody>
+            </Table>
+        </div> : null;
     }
 }
 
