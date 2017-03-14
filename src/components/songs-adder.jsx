@@ -8,7 +8,7 @@ class SongAdder extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { songName: "" }
+        this.state = { songName: "" };
     }
 
     getValidationState() {
@@ -19,14 +19,14 @@ class SongAdder extends Component {
     }
 
     handleSongNameUpdate(evt) {
-        this.setState({ songName: evt.target.value })
+        this.setState({ songName: evt.target.value });
     }
 
     songWillBeAdded() {
-        let songName = this.state.songName;
+        let songName = this.state.songName.trim();
         if (songName !== "") {
-            this.setState({ songName: "" })
-            this.props.handleSong({ name: songName, votes: 1 })
+            this.setState({ songName: "" });
+            this.props.handleSong({ name: songName, votes: 1 });
         }
     }
 

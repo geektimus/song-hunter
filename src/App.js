@@ -10,44 +10,46 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = { songs: [] }
+    this.state = { songs: [] };
   }
 
   compare(song_a, song_b) {
-    if (song_b.votes < song_a.votes)
+    if (song_b.votes < song_a.votes) {
       return -1;
-    if (song_b.votes > song_a.votes)
+    }
+    if (song_b.votes > song_a.votes) {
       return 1;
+    }
     return 0;
   }
 
   songWillBeAdded(newSong) {
-    console.log("A song will be added to the vote list.", newSong.name)
+    console.log("A song will be added to the vote list.", newSong.name);
 
     let alreadyAddedSong = this.state.songs.filter(song => song.name === newSong.name);
+    let songs = [];
     if (alreadyAddedSong.length === 0) {
-      let songs = [...this.state.songs, newSong]
-      this.setState({ songs: songs })
+      songs = [...this.state.songs, newSong];
     } else {
-      let songs = this.state.songs.map(song => {
+      songs = this.state.songs.map(song => {
         if (song.name === newSong.name) {
           song.votes++;
         }
         return song;
-      }).sort(this.compare)
-      this.setState({ songs: songs })
+      }).sort(this.compare);
     }
+    this.setState({ songs: songs });
   }
 
   songListShouldBeUpdated(songIndex) {
     let songs = this.state.songs.map((song, index) => {
       if (index === songIndex) {
-        console.log("adding vote to: ", song.name)
-        song.votes++
+        console.log("adding vote to: ", song.name);
+        song.votes++;
       }
-      return song
+      return song;
     }).sort(this.compare);
-    this.setState({ songs: songs })
+    this.setState({ songs: songs });
   }
 
   render() {

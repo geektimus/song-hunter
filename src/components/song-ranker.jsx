@@ -22,7 +22,7 @@ class SongRanker extends Component {
             <Table striped responsive>
                 <thead>
                     <tr>
-                        <th style={{ textAlign: "center" }}>Song - Votes</th>
+                        <th style={{ textAlign: "center" }}>Song / Votes</th>
                         <th style={{ textAlign: "center" }}>Vote</th>
                     </tr>
                 </thead>
