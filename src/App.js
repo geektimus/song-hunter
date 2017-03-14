@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
 import SongAdder from './components/songs-adder';
 import SongRanker from './components/song-ranker';
-import logo from './logo.svg';
+import MyNavbar from './components/navbar';
 import './App.css';
 
 class App extends Component {
 
   constructor() {
     super();
-    this.state = {songs: []}
+    this.state = { songs: [] }
   }
 
-  compare(song_a,song_b) {
-        if (song_b.votes < song_a.votes)
-            return -1;
-        if (song_b.votes > song_a.votes)
-            return 1;
-        return 0;
-    }
+  compare(song_a, song_b) {
+    if (song_b.votes < song_a.votes)
+      return -1;
+    if (song_b.votes > song_a.votes)
+      return 1;
+    return 0;
+  }
 
   songWillBeAdded(newSong) {
     console.log("A song will be added to the vote list.", newSong.name)
 
     let alreadyAddedSong = this.state.songs.filter(song => song.name === newSong.name);
     if (alreadyAddedSong.length === 0) {
-      let songs = [...this.state.songs,newSong]
-      this.setState({songs: songs})
+      let songs = [...this.state.songs, newSong]
+      this.setState({ songs: songs })
     } else {
       let songs = this.state.songs.map(song => {
         if (song.name === newSong.name) {
@@ -33,30 +33,27 @@ class App extends Component {
         }
         return song;
       }).sort(this.compare)
-      this.setState({songs: songs})
+      this.setState({ songs: songs })
     }
   }
 
   songListShouldBeUpdated(songIndex) {
     let songs = this.state.songs.map((song, index) => {
-            if (index === songIndex) {
-                console.log("adding vote to: ", song.name)
-                song.votes++
-            }
-            return song
-        }).sort(this.compare);
-    this.setState({songs: songs})
+      if (index === songIndex) {
+        console.log("adding vote to: ", song.name)
+        song.votes++
+      }
+      return song
+    }).sort(this.compare);
+    this.setState({ songs: songs })
   }
 
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to the Song Hunter</h2>
-        </div>
-        <SongAdder handleSong={this.songWillBeAdded.bind(this)}/>
-        <SongRanker handleListUpdates={this.songListShouldBeUpdated.bind(this)} songs={this.state.songs}/>
+        <MyNavbar />
+        <SongAdder handleSong={this.songWillBeAdded.bind(this)} />
+        <SongRanker handleListUpdates={this.songListShouldBeUpdated.bind(this)} songs={this.state.songs} />
       </div>
     );
   }

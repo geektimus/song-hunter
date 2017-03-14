@@ -9,21 +9,20 @@ class SongRanker extends Component {
 
     render() {
         let songs = this.props.songs.map(
-            (song, index) => 
+            (song, index) =>
                 <li key={index}>
                     <span className="songDesc">{song.name} - <span className="votes">{song.votes}</span></span>
-                    <button className="voter" value={index} onClick={this.addVoteTo.bind(this)}>👍🏻</button>
+                    <button className="voter" value={index} onClick={this.addVoteTo.bind(this)}>+</button>
                 </li>
-                
         )
 
         return <div className="ranking">
             <div className="title">Ranking</div>
             <ul>
-            {songs}
+                {songs}
             </ul>
         </div>
-        
+
     }
 }
 
