@@ -43,7 +43,7 @@ class SongAdder extends Component {
                     placeholder="Please type the song's name"
                     onChange={this.handleSongNameUpdate.bind(this)}
                 />
-                <Button type="button" onClick={this.songWillBeAdded.bind(this)}>
+                <Button bsStyle="primary" type="button" onClick={this.songWillBeAdded.bind(this)}>
                     Add Song
                 </Button>
                 <FormControl.Feedback />
