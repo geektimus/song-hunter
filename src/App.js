@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import SongAdder from './components/songs-adder';
 import SongRanker from './components/song-ranker';
 import MyNavbar from './components/navbar';
+
+import { Grid, Row, Col } from 'react-bootstrap';
 import './App.css';
 
 class App extends Component {
@@ -52,8 +54,14 @@ class App extends Component {
     return (
       <div className="App">
         <MyNavbar />
-        <SongAdder handleSong={this.songWillBeAdded.bind(this)} />
-        <SongRanker handleListUpdates={this.songListShouldBeUpdated.bind(this)} songs={this.state.songs} />
+        <Grid fluid>
+          <Row>
+            <Col lg={12} md={12} sm={12}>
+              <SongAdder handleSong={this.songWillBeAdded.bind(this)} />
+              <SongRanker handleListUpdates={this.songListShouldBeUpdated.bind(this)} songs={this.state.songs} />
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }

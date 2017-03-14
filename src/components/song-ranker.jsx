@@ -19,7 +19,7 @@ class SongRanker extends Component {
 
         return songs.length > 0 ? <div className="ranking">
             <div className="title">Ranking</div>
-            <Table bordered striped>
+            <Table striped responsive>
                 <thead>
                     <tr>
                         <th style={{ textAlign: "center" }}>Song - Votes</th>
