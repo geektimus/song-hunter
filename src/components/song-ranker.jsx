@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import { Badge, Table } from 'react-bootstrap';
 
+import * as SongActions from '../actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 class SongRanker extends Component {
 
     addVoteTo(evt) {
-        let songIndex = parseInt(evt.target.value, 10);
-        this.props.handleListUpdates(songIndex);
+        let songId = evt.target.value;
+        this.props.addVote(songId);
     }
 
     render() {
         let songs = this.props.songs.map(
-            (song, index) =>
-                <tr key={index}>
+            song =>
+                <tr key={song.id}>
                     <td><span className="songDesc">{song.name} - <Badge>{song.votes}</Badge></span></td>
-                    <td><button className="voter" value={index} onClick={this.addVoteTo.bind(this)}>+</button></td>
+                    <td><button className="voter" value={song.id} onClick={this.addVoteTo.bind(this)}>+</button></td>
                 </tr>
         )
 
@@ -34,4 +38,14 @@ class SongRanker extends Component {
     }
 }
 
-export default SongRanker;
+const mapStateToProps = (state) => {
+    return {
+        songs: state.songList.songs
+    }
+}
+const mapDispatchToProps = dispatch => bindActionCreators(SongActions, dispatch);
+
+const newSongRanker = connect(
+    mapStateToProps, mapDispatchToProps)(SongRanker)
+
+export default newSongRanker;

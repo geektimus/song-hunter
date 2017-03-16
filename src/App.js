@@ -32,24 +32,6 @@ class App extends Component {
     return 0;
   }
 
-  songWillBeAdded(newSong) {
-    console.log("A song will be added to the vote list.", newSong.name);
-
-    let alreadyAddedSong = this.state.songs.filter(song => song.name === newSong.name);
-    let songs = [];
-    if (alreadyAddedSong.length === 0) {
-      songs = [...this.state.songs, newSong];
-    } else {
-      songs = this.state.songs.map(song => {
-        if (song.name === newSong.name) {
-          song.votes++;
-        }
-        return song;
-      }).sort(this.compare);
-    }
-    this.setState({ songs: songs });
-  }
-
   songListShouldBeUpdated(songIndex) {
     let songs = this.state.songs.map((song, index) => {
       if (index === songIndex) {
@@ -64,17 +46,17 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-      <div className="App">
-        <MyNavbar />
-        <Grid fluid>
-          <Row>
-            <Col lg={12} md={12} sm={12}>
-              <SongAdder handleSong={this.songWillBeAdded.bind(this)} />
-              <SongRanker handleListUpdates={this.songListShouldBeUpdated.bind(this)} songs={this.state.songs} />
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+        <div className="App">
+          <MyNavbar />
+          <Grid fluid>
+            <Row>
+              <Col lg={12} md={12} sm={12}>
+                <SongAdder />
+                <SongRanker handleListUpdates={this.songListShouldBeUpdated.bind(this)} songs={this.state.songs} />
+              </Col>
+            </Row>
+          </Grid>
+        </div>
       </Provider>
     );
   }

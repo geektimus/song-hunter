@@ -4,3 +4,10 @@ export const addSong = (song) => {
         song: song
     }
 }
+
+export const addVote = (songId) => {
+    return {
+        type: 'ADD_VOTE',
+        songId: songId
+    }
+}
