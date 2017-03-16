@@ -39,13 +39,8 @@ class SongRanker extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
-        songs: state.songList.songs
-    }
+    return { songs: state.songList.songs }
 }
 const mapDispatchToProps = dispatch => bindActionCreators(SongActions, dispatch);
 
-const newSongRanker = connect(
-    mapStateToProps, mapDispatchToProps)(SongRanker)
-
-export default newSongRanker;
+export default connect(mapStateToProps, mapDispatchToProps)(SongRanker);

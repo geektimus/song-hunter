@@ -50,13 +50,8 @@ class SongAdder extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
-        songs: state.songList.songs
-    }
+    return { songs: state.songList.songs }
 }
 const mapDispatchToProps = dispatch => bindActionCreators(SongActions, dispatch);
 
-const newSongAdder = connect(
-    mapStateToProps, mapDispatchToProps)(SongAdder)
-
-export default newSongAdder;
+export default connect(mapStateToProps, mapDispatchToProps)(SongAdder);

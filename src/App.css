@@ -22,31 +22,3 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-input.large-input-text {
-    width: 300px;
-}
-
-.ranking {
-  margin: 0 auto;
-  width: 500px;
-}
-
-.ranking .title {
-  font-weight: bold;
-  margin: 15px 0px;
-}
-
-.ranking ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.songDesc {
-  font-size: 0.8em;
-}
-
-.songDesc .votes {
-  font-weight: bold;
-}
