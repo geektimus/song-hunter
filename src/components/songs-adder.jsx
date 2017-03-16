@@ -16,6 +16,12 @@ class SongAdder extends Component {
         let refs = this.refs;
         let songName = refs.songName.value;
 
+        // Avoid empty song names.
+        if (songName !== undefined && songName.trim().length === 0) {
+            refs.songForm.reset();
+            return false;
+        }
+
         // Validate if the song already exists on the list.
         let song = this.props.songs.filter(song => song.name === songName.trim())[0];
 
