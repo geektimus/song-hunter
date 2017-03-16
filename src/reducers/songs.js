@@ -1,15 +1,7 @@
+import compare from '../utils/SongUtils'
+
 const initialState = {
     songs: []
-}
-
-const compare = (song_a, song_b) => {
-    if (song_b.votes < song_a.votes) {
-        return -1;
-    }
-    if (song_b.votes > song_a.votes) {
-        return 1;
-    }
-    return 0;
 }
 
 const songs = (state = initialState, action) => {
