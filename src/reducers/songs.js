@@ -16,13 +16,13 @@ const songs = (state = initialState, action) => {
             return Object.assign({}, state, { songs: songs });
         // This should be on a separated file for the vote's reducers.
         case 'ADD_VOTE':
-            let song = state.songs.filter(song => song.id === action.songId)[0];
-            console.log("Adding vote to song: ", song.name);
-            song.votes++;
-
-            songs = state.songs.filter(song => song.id !== action.songId);
-            songs.push(song);
-            songs.sort(compare);
+            songs = state.songs.map(song => {
+                if (song.id === action.songId) {
+                    console.log("Adding vote to: ", song.name);
+                    song.votes++;
+                }
+                return song;
+            }).sort(compare);
 
             return Object.assign({}, state, { songs: songs });
         default:
