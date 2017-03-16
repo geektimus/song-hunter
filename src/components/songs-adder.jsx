@@ -1,56 +1,57 @@
 import React, { Component } from 'react';
-import { Form, ControlLabel, FormGroup, FormControl, HelpBlock, Button } from 'react-bootstrap';
+
+import * as SongActions from '../actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import uuid from 'uuid';
 
 /**
  * Component to add songs to the list, It should contain a input field and a button.
  */
 class SongAdder extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { songName: "" };
-    }
+    handleSubmit(evt) {
+        evt.preventDefault();
+        let refs = this.refs;
+        let songName = refs.songName.value;
 
-    getValidationState() {
-        const length = this.state.songName.length;
-        if (length > 5) return 'success';
-        else if (length > 3) return 'warning';
-        else if (length > 0) return 'error';
-    }
+        // Validate if the song already exists on the list.
+        let song = this.props.songs.filter(song => song.name === songName.trim())[0];
 
-    handleSongNameUpdate(evt) {
-        this.setState({ songName: evt.target.value });
-    }
-
-    songWillBeAdded() {
-        let songName = this.state.songName.trim();
-        if (songName !== "") {
-            this.setState({ songName: "" });
-            this.props.handleSong({ name: songName, votes: 1 });
+        // Trigger actions
+        if (song) {
+            this.props.addVote(song.id);
+        } else {
+            this.props.addSong({ id: uuid.v1(), name: songName, votes: 1 });
         }
+
+        // Reset Form
+        refs.songForm.reset();
     }
 
     render() {
-        return <Form className="songAdder">
-            <FormGroup
-                controlId="songAdder"
-                validationState={this.getValidationState()}
-            >
-                <ControlLabel>Add song to the voting list</ControlLabel>
-                <FormControl
-                    type="text"
-                    value={this.state.songName}
-                    placeholder="Please type the song's name"
-                    onChange={this.handleSongNameUpdate.bind(this)}
-                />
-                <Button bsStyle="primary" type="button" onClick={this.songWillBeAdded.bind(this)}>
-                    Add Song
-                </Button>
-                <FormControl.Feedback />
-                <HelpBlock>The song's name should be longer than 3 letters</HelpBlock>
-            </FormGroup>
-        </Form>
+        return (
+            <form ref="songForm" onSubmit={this.handleSubmit.bind(this)}>
+                <div className="form-group has-feedback">
+                    <label className="control-label">Add song to the voting list</label>
+                    <input
+                        type="text"
+                        placeholder="Please type the song's name"
+                        id="songName"
+                        ref="songName"
+                        className="form-control" />
+                    <button type="submit" className="btn btn-primary">Add Song</button>
+                    <span className="help-block">The song's name should be longer than 3 letters</span>
+                </div>
+            </form>
+        )
     }
 }
 
-export default SongAdder;
+const mapStateToProps = (state) => {
+    return { songs: state.songList.songs }
+}
+const mapDispatchToProps = dispatch => bindActionCreators(SongActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SongAdder);
