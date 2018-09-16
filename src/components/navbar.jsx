@@ -6,7 +6,7 @@ class MyNavbar extends Component {
         return <Navbar inverse collapseOnSelect>
             <Navbar.Header>
                 <Navbar.Brand>
-                    <a href="#">Song Hunter</a>
+                    <a href="/">Song Hunter</a>
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>
