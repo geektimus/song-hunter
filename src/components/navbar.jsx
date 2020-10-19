@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { Navbar } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 
 class MyNavbar extends Component {
     render() {
-        return <Navbar inverse collapseOnSelect>
-            <Navbar.Header>
-                <Navbar.Brand>
-                    <a href="/">Song Hunter</a>
-                </Navbar.Brand>
-                <Navbar.Toggle />
-            </Navbar.Header>
+        return <Container>
+        <Navbar expand="lg" variant="dark" bg="dark">
+          <Navbar.Brand href="#">Song Hunter</Navbar.Brand>
         </Navbar>
+      </Container>
     }
 }
 

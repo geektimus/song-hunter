@@ -48,6 +48,7 @@ class SongAdder extends Component {
                         ref="songName"
                         className="form-control" />
                     <button type="submit" className="btn btn-primary">Add Song</button>
+                    <br />
                     <span className="help-block">The song's name should be longer than 3 letters</span>
                 </div>
             </form>

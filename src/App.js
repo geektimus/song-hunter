@@ -8,7 +8,9 @@ import thunk from 'redux-thunk';
 import reducer from './reducers';
 import { Provider } from 'react-redux';
 
-import { Grid, Row, Col } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import './App.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -22,14 +24,14 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <MyNavbar />
-          <Grid fluid>
+          <Container>
             <Row>
               <Col lg={12} md={12} sm={12}>
                 <SongAdder />
                 <SongRanker />
               </Col>
             </Row>
-          </Grid>
+          </Container>
         </div>
       </Provider>
     );
