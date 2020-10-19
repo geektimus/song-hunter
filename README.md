@@ -1,5 +1,7 @@
 # Song Hunter
 
+[![Build Status](https://travis-ci.org/geektimus/song-hunter.svg?branch=master)](https://travis-ci.org/geektimus/song-hunter)
+
 Application created to rank different songs by votes.
 
 ## Notes:
