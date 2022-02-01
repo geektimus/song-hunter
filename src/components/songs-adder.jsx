@@ -4,7 +4,7 @@ import * as SongActions from '../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 /**
  * Component to add songs to the list, It should contain a input field and a button.
@@ -29,7 +29,7 @@ class SongAdder extends Component {
         if (song) {
             this.props.addVote(song.id);
         } else {
-            this.props.addSong({ id: uuid.v1(), name: songName, votes: 1 });
+            this.props.addSong({ id: uuidv4(), name: songName, votes: 1 });
         }
 
         // Reset Form
