@@ -11,14 +11,23 @@ import { v4 as uuidv4 } from 'uuid';
  */
 class SongAdder extends Component {
 
+    constructor(props) {
+        super(props)
+
+        this.songFormRef = React.createRef();
+        this.songNameRef = React.createRef();
+    }
+
     handleSubmit(evt) {
         evt.preventDefault();
-        let refs = this.refs;
-        let songName = refs.songName.value;
+        
+        let songName = this.songNameRef.current.value;
+
+        if (songName === "") return
 
         // Avoid empty song names.
         if (songName !== undefined && songName.trim().length === 0) {
-            refs.songForm.reset();
+            this.songForm.reset();
             return false;
         }
 
@@ -33,19 +42,18 @@ class SongAdder extends Component {
         }
 
         // Reset Form
-        refs.songForm.reset();
+        this.songFormRef.current.reset();
     }
 
     render() {
         return (
-            <form ref="songForm" onSubmit={this.handleSubmit.bind(this)}>
+            <form ref={this.songFormRef} onSubmit={this.handleSubmit.bind(this)}>
                 <div className="form-group has-feedback">
                     <label className="control-label">Add song to the voting list</label>
                     <input
                         type="text"
                         placeholder="Please type the song's name"
-                        id="songName"
-                        ref="songName"
+                        ref={this.songNameRef}
                         className="form-control" />
                     <button type="submit" className="btn btn-primary">Add Song</button>
                     <br />
