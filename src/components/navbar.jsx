@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
 
 class MyNavbar extends Component {
     render() {
-        return <Container>
-        <Navbar expand="lg" variant="dark" bg="dark">
-          <Navbar.Brand href="#">Song Hunter</Navbar.Brand>
-        </Navbar>
-      </Container>
+        return (
+            <nav className="bg-gray-800 text-white shadow-lg">
+                <div className="container mx-auto px-4 py-4">
+                    <div className="text-xl font-bold">Song Hunter</div>
+                </div>
+            </nav>
+        );
     }
 }
 
