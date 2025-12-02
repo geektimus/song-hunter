@@ -4,13 +4,27 @@
 
 @layer base {
   :root {
-    /* Default theme CSS variables - will be overridden by theme-specific values */
+    /* Default theme CSS variables */
     --color-primary: #3b82f6;
     --color-secondary: #1e40af;
     --color-background: #f9fafb;
     --color-surface: #ffffff;
     --color-text: #111827;
     --color-text-secondary: #6b7280;
+    --color-accent: #3b82f6;
+    --color-navbar: #1f2937;
+    --color-navbar-secondary: #111827;
+    --color-primary-hover: #2563eb;
+    --color-secondary-hover: #1e3a8a;
+    --color-accent-hover: #2563eb;
+    --color-background-secondary: #f3f4f6;
+    --color-surface-hover: #f9fafb;
+    --color-text-light: #ffffff;
+    --color-border: #e5e7eb;
+    --color-border-dark: #d1d5db;
+    --color-badge: #3b82f6;
+    --color-badge-dark: #1e40af;
+    --color-ranking: #1e40af;
   }
 
   body {
@@ -20,11 +34,84 @@
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-background);
+    color: var(--color-text);
   }
 
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
+  }
+}
+
+@layer components {
+  /* Theme-aware utility classes */
+  .theme-navbar {
+    background: linear-gradient(to right, var(--color-navbar), var(--color-navbar-secondary, var(--color-navbar)), var(--color-navbar));
+    color: var(--color-text-light);
+  }
+
+  .theme-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+  }
+
+  .theme-primary-gradient {
+    background: linear-gradient(to right, var(--color-primary), var(--color-primary-hover));
+  }
+
+  .theme-primary-gradient-hover {
+    background: linear-gradient(to right, var(--color-primary-hover), var(--color-primary));
+  }
+
+  .theme-secondary-gradient {
+    background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-hover));
+  }
+
+  .theme-accent-gradient {
+    background: linear-gradient(to right, var(--color-accent), var(--color-accent-hover));
+  }
+
+  .theme-surface {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  .theme-background {
+    background-color: var(--color-background);
+  }
+
+  .theme-background-gradient {
+    background: linear-gradient(to bottom right, var(--color-background), var(--color-background-secondary));
+  }
+
+  .theme-text {
+    color: var(--color-text);
+  }
+
+  .theme-text-secondary {
+    color: var(--color-text-secondary);
+  }
+
+  .theme-border {
+    border-color: var(--color-border);
+  }
+
+  .theme-border-dark {
+    border-color: var(--color-border-dark);
+  }
+
+  .theme-badge {
+    background-color: var(--color-badge);
+    color: var(--color-text-light);
+  }
+
+  .theme-badge-gradient {
+    background: linear-gradient(to right, var(--color-badge), var(--color-badge-dark));
+  }
+
+  .theme-ranking-gradient {
+    background: linear-gradient(to right, var(--color-ranking), var(--color-badge-dark));
   }
 }
 

@@ -26,10 +26,12 @@ export const ThemeProvider = ({ children }) => {
     // Apply theme attribute for CSS selectors
     root.setAttribute('data-theme', theme);
     
-    // Apply CSS variables dynamically
+    // Apply CSS variables dynamically - map all theme colors
     if (themeConfig.colors) {
       Object.entries(themeConfig.colors).forEach(([key, value]) => {
-        root.style.setProperty(`--color-${key}`, value);
+        // Convert camelCase to kebab-case for CSS variables
+        const cssKey = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+        root.style.setProperty(`--color-${cssKey}`, value);
       });
     }
     
