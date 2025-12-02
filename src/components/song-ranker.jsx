@@ -16,19 +16,34 @@ class SongRanker extends Component {
         const sortedSongs = [...this.props.songs].sort((a, b) => b.votes - a.votes);
 
         let songs = sortedSongs.map(
-            song =>
-                <tr key={song.id} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="text-gray-900 font-medium">{song.name}</span>
-                        <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                            {song.votes}
-                        </span>
+            (song, index) =>
+                <tr key={song.id} className="hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50 transition-all duration-200 group">
+                    <td className="px-8 py-5">
+                        <div className="flex items-center space-x-4">
+                            <div className="flex-shrink-0">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold shadow-md">
+                                    {index + 1}
+                                </div>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <span className="text-gray-900 font-semibold text-lg group-hover:text-blue-700 transition-colors">
+                                    {song.name}
+                                </span>
+                            </div>
+                            <div className="flex-shrink-0">
+                                <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-bold bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md">
+                                    <span className="mr-1">👆</span>
+                                    {song.votes}
+                                </span>
+                            </div>
+                        </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-center">
+                    <td className="px-8 py-5 whitespace-nowrap text-center">
                         <button 
-                            className="w-10 h-10 bg-white border-2 border-gray-300 rounded-lg hover:bg-blue-50 hover:border-blue-500 text-gray-700 font-bold text-lg transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+                            className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 border-2 border-blue-400 rounded-xl text-white font-bold text-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-110 hover:-translate-y-1 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                             value={song.id} 
                             onClick={this.addVoteTo.bind(this)}
+                            aria-label={`Vote for ${song.name}`}
                         >
                             +
                         </button>
@@ -37,24 +52,27 @@ class SongRanker extends Component {
         )
 
         return songs.length > 0 ? (
-            <div className="max-w-4xl mx-auto">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
-                        <h2 className="text-xl font-bold text-gray-800">Ranking</h2>
+            <div className="max-w-5xl mx-auto animate-fade-in">
+                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                    <div className="px-8 py-6 bg-gradient-to-r from-gray-50 to-blue-50 border-b border-gray-200">
+                        <div className="flex items-center space-x-3">
+                            <span className="text-3xl">🏆</span>
+                            <h2 className="text-2xl font-bold text-gray-800">Ranking</h2>
+                        </div>
                     </div>
                     <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200">
                             <thead className="bg-gray-50">
                                 <tr>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th className="px-8 py-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
                                         Song / Votes
                                     </th>
-                                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th className="px-8 py-4 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">
                                         Vote
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
+                            <tbody className="bg-white divide-y divide-gray-100">
                                 {songs}
                             </tbody>
                         </table>

@@ -47,26 +47,39 @@ class SongAdder extends Component {
 
     render() {
         return (
-            <div className="max-w-2xl mx-auto mb-8">
-                <form ref={this.songFormRef} onSubmit={this.handleSubmit.bind(this)} className="bg-white rounded-lg shadow-md p-6">
-                    <label className="block text-gray-700 text-sm font-semibold mb-2">
-                        Add song to the voting list
-                    </label>
-                    <div className="space-y-4">
-                        <input
-                            type="text"
-                            placeholder="Please type the song's name"
-                            ref={this.songNameRef}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        />
+            <div className="max-w-2xl mx-auto mb-10 animate-fade-in">
+                <form 
+                    ref={this.songFormRef} 
+                    onSubmit={this.handleSubmit.bind(this)} 
+                    className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300"
+                >
+                    <div className="flex items-center space-x-2 mb-6">
+                        <span className="text-2xl">➕</span>
+                        <label className="text-gray-800 text-lg font-bold">
+                            Add song to the voting list
+                        </label>
+                    </div>
+                    <div className="space-y-5">
+                        <div className="relative">
+                            <input
+                                type="text"
+                                placeholder="Enter song name..."
+                                ref={this.songNameRef}
+                                className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-800 placeholder-gray-400 hover:border-gray-300"
+                            />
+                        </div>
                         <button 
                             type="submit" 
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+                            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
                         >
-                            Add Song
+                            <span className="flex items-center justify-center space-x-2">
+                                <span>Add Song</span>
+                                <span>🎶</span>
+                            </span>
                         </button>
-                        <p className="text-sm text-gray-500 text-center">
-                            The song's name should be longer than 3 letters
+                        <p className="text-sm text-gray-500 text-center flex items-center justify-center space-x-1">
+                            <span>ℹ️</span>
+                            <span>The song's name should be longer than 3 letters</span>
                         </p>
                     </div>
                 </form>

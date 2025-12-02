@@ -19,9 +19,9 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100">
           <MyNavbar />
-          <div className="container mx-auto px-4 py-8">
+          <div className="container mx-auto px-4 py-10">
             <SongAdder />
             <SongRanker />
           </div>
