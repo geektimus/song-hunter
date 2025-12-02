@@ -4,7 +4,7 @@ import ThemeSwitcher from './theme-switcher';
 class MyNavbar extends Component {
     render() {
         return (
-            <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white shadow-xl border-b border-gray-700">
+            <nav className="theme-navbar shadow-xl border-b" style={{ borderColor: 'var(--color-border-dark, #374151)' }}>
                 <div className="container mx-auto px-6 py-5">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">

@@ -51,11 +51,11 @@ class SongAdder extends Component {
                 <form 
                     ref={this.songFormRef} 
                     onSubmit={this.handleSubmit.bind(this)} 
-                    className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300"
+                    className="theme-surface rounded-2xl shadow-xl p-8 theme-border hover:shadow-2xl transition-all duration-300 border"
                 >
                     <div className="flex items-center space-x-2 mb-6">
                         <span className="text-2xl">➕</span>
-                        <label className="text-gray-800 text-lg font-bold">
+                        <label className="theme-text text-lg font-bold">
                             Add song to the voting list
                         </label>
                     </div>
@@ -65,19 +65,41 @@ class SongAdder extends Component {
                                 type="text"
                                 placeholder="Enter song name..."
                                 ref={this.songNameRef}
-                                className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-800 placeholder-gray-400 hover:border-gray-300"
+                                className="w-full px-5 py-4 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all duration-200 placeholder-gray-400"
+                                style={{
+                                    borderColor: 'var(--color-border)',
+                                    color: 'var(--color-text)',
+                                    backgroundColor: 'var(--color-surface)',
+                                }}
+                                onFocus={(e) => {
+                                    e.target.style.borderColor = 'var(--color-primary)';
+                                    e.target.style.boxShadow = '0 0 0 3px rgba(var(--color-primary-rgb, 59, 130, 246), 0.1)';
+                                }}
+                                onBlur={(e) => {
+                                    e.target.style.borderColor = 'var(--color-border)';
+                                    e.target.style.boxShadow = 'none';
+                                }}
                             />
                         </div>
                         <button 
                             type="submit" 
-                            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
+                            className="text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 w-full"
+                            style={{
+                                background: 'linear-gradient(to right, var(--color-primary), var(--color-primary-hover, var(--color-primary)))',
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.style.background = 'linear-gradient(to right, var(--color-primary-hover, var(--color-primary)), var(--color-primary))';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.background = 'linear-gradient(to right, var(--color-primary), var(--color-primary-hover, var(--color-primary)))';
+                            }}
                         >
                             <span className="flex items-center justify-center space-x-2">
                                 <span>Add Song</span>
                                 <span>🎶</span>
                             </span>
                         </button>
-                        <p className="text-sm text-gray-500 text-center flex items-center justify-center space-x-1">
+                        <p className="text-sm theme-text-secondary text-center flex items-center justify-center space-x-1">
                             <span>ℹ️</span>
                             <span>The song's name should be longer than 3 letters</span>
                         </p>
