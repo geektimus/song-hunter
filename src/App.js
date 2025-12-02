@@ -4,7 +4,7 @@ import SongRanker from './components/song-ranker';
 import MyNavbar from './components/navbar';
 
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import reducer from './reducers';
 import { Provider } from 'react-redux';
 
