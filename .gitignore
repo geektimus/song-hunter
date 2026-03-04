@@ -90,5 +90,5 @@ typings/
 ### VisualStudioCode ###
 .vscode/*
 
-### Build ###
-build/
+# Output of Vite
+dist/

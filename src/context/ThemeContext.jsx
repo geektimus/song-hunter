@@ -22,10 +22,10 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     const themeConfig = getTheme(theme);
     const root = document.documentElement;
-    
+
     // Apply theme attribute for CSS selectors
     root.setAttribute('data-theme', theme);
-    
+
     // Apply CSS variables dynamically - map all theme colors
     if (themeConfig.colors) {
       Object.entries(themeConfig.colors).forEach(([key, value]) => {
@@ -34,7 +34,7 @@ export const ThemeProvider = ({ children }) => {
         root.style.setProperty(`--color-${cssKey}`, value);
       });
     }
-    
+
     // Save theme preference
     localStorage.setItem('songHunterTheme', theme);
   }, [theme]);
@@ -55,4 +55,3 @@ export const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   );
 };
-
