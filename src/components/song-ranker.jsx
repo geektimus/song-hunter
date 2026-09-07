@@ -53,16 +53,10 @@ class SongRanker extends Component {
                     </td>
                     <td className="px-8 py-5 whitespace-nowrap text-center">
                         <button 
-                            className="border-2 rounded-xl text-white font-bold text-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-110 hover:-translate-y-1 active:scale-95 focus:outline-none focus:ring-2 w-12 h-12"
+                            className="border-2 rounded-xl text-white font-bold text-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-110 hover:-translate-y-1 active:scale-95 hover:opacity-90 focus:outline-none focus:ring-2 w-12 h-12"
                             style={{
                                 background: 'linear-gradient(to bottom right, var(--color-primary), var(--color-primary-hover, var(--color-primary)))',
                                 borderColor: 'var(--color-primary)',
-                            }}
-                            onMouseEnter={(e) => {
-                                e.target.style.opacity = '0.9';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.target.style.opacity = '1';
                             }}
                             value={song.id} 
                             onClick={this.addVoteTo.bind(this)}

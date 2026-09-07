@@ -83,18 +83,9 @@ class SongAdder extends Component {
                         </div>
                         <button 
                             type="submit" 
-                            className="text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 w-full"
-                            style={{
-                                background: 'linear-gradient(to right, var(--color-primary), var(--color-primary-hover, var(--color-primary)))',
-                            }}
-                            onMouseEnter={(e) => {
-                                e.target.style.background = 'linear-gradient(to right, var(--color-primary-hover, var(--color-primary)), var(--color-primary))';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.target.style.background = 'linear-gradient(to right, var(--color-primary), var(--color-primary-hover, var(--color-primary)))';
-                            }}
+                            className="theme-btn-primary text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 w-full"
                         >
-                            <span className="flex items-center justify-center space-x-2">
+                            <span className="flex items-center justify-center space-x-2 pointer-events-none">
                                 <span>Add Song</span>
                                 <span>🎶</span>
                             </span>
