@@ -64,6 +64,14 @@
     background: linear-gradient(to right, var(--color-primary-hover), var(--color-primary));
   }
 
+  .theme-btn-primary {
+    background: linear-gradient(to right, var(--color-primary), var(--color-primary-hover, var(--color-primary)));
+  }
+
+  .theme-btn-primary:hover {
+    background: linear-gradient(to right, var(--color-primary-hover, var(--color-primary)), var(--color-primary));
+  }
+
   .theme-secondary-gradient {
     background: linear-gradient(to right, var(--color-secondary), var(--color-secondary-hover));
   }
